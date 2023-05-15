@@ -331,7 +331,7 @@ handleAction = case _ of
   OnWindowMouseUp -> do
     -- Handle the case of mousedown on NSelect dropdown, mouseup on the outside.
     state <- H.get
-    when state.isOpen
+    when (state.isOpen || state.clickedInside)
       $ H.modify_
       $ _ { clickedInside = false }
 
